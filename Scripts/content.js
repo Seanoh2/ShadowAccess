@@ -1,22 +1,22 @@
 const tickets = document.getElementsByClassName("zd-comment");
+const accountID = "";
 const username = "";
-const password = "";
 
 function callback(mutationList) {
     mutationList.forEach((mutation) => {
         var lines = mutation.getElementsByTagName("p");
         for(var line in lines) {
+            var accountIDReg = new RegExp("AccountID: [a-zA-Z0-9]*$");
             var usernameReg = new RegExp("Username: [a-zA-Z0-9]*$");
-            var passwordReg = new RegExp("Password: [a-zA-Z0-9]*$");
 
-            if(usernameReg.test(line)) {
-                username = line.replace("Username: ", "");
-                console.log("Username Found: " + username);
+            if(accountIDReg.test(line)) {
+                accountID = line.replace("Account ID: ", "");
+                console.log("Account ID Found: " + accountID);
             }
 
-            if(passwordReg.test(line)) {
-                password = line.replace("Password: ", "");
-                console.log("Password Found: " + password)
+            if(usernameReg.test(line)) {
+                username = line.replace("accountID: ", "");
+                console.log("accountID Found: " + username)
             }
         }
     });
