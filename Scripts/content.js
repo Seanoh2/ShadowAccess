@@ -1,4 +1,4 @@
-const tickets = document.getElementsByClassName("zd-comment");
+const tickets = document.querySelector('.zd-comment');
 const accountID = "";
 const username = "";
 
@@ -8,6 +8,8 @@ function callback(mutationList) {
         for(var line in lines) {
             var accountIDReg = new RegExp("AccountID: [a-zA-Z0-9]*$");
             var usernameReg = new RegExp("Username: [a-zA-Z0-9]*$");
+
+            console.log("Checking: " + line)
 
             if(accountIDReg.test(line)) {
                 accountID = line.replace("Account ID: ", "");
@@ -23,7 +25,9 @@ function callback(mutationList) {
   }
 
 const observer = new MutationObserver(callback);
-observer.observe(tickets, {
-    subtree: true,
-    childList: true,
-});
+for(const ticket of tickets) {
+    observer.observe(ticket, {
+        subtree: true,
+        childList: true,
+    });
+}
