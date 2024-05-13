@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "OpenShadow",
+  "description": "Open shadow links",
+  "version": "1.0",
+  "action": {
+    "default_popup": "Popup/shadow.html",
+    "default_icon": "Images/shadowImage.png"
+  },
+  "content_scripts": [{
+      "js": ["scripts/content.js"],
+      "run_at": "document_end",
+      "matches": [
+        "https://kaseya.zendesk.com/agent/tickets/*"
+      ]
+    }]
+}
